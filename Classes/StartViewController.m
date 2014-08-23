@@ -6,10 +6,18 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "OpeningViewController.h"
-#import "BlueAppDelegate.h"
+#import "StartViewController.h"
 
-@implementation OpeningViewController
+@interface StartViewController()
+
+@property (retain, nonatomic) IBOutlet UIImageView *prePhotoView;
+
+- (IBAction) btnStart:(id)sender ;
+
+
+@end
+
+@implementation StartViewController
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -58,30 +66,8 @@
 - (void)dealloc {
     
     [_prePhotoView release];
+    [_prePhotoView release];
     [super dealloc];
-}
-
-- (IBAction) btnStart:(id)sender {
-    
-    
-        UIImagePickerController *picker = [[[UIImagePickerController alloc] init] autorelease];
-
-    
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    
-    
-    [self.prePhotoView setHidden:NO];
-        [picker setCameraOverlayView:[self prePhotoView]];
-    
-    
-        picker.delegate = self  ;
-        [self presentModalViewController:picker animated:YES];
-
-    
-    
-	//BlueAppDelegate *_delegate = [[UIApplication sharedApplication] delegate];
-	//[_delegate displayBlueViewController];
 }
 
 #pragma mark -
@@ -149,4 +135,31 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 
+- (IBAction)btnStart:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self.prePhotoView setHidden:NO];
+    
+    
+    UIImage *image= [self prePhotoView].image;
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    imageView.image = image;
+    imageView.alpha = 0.5;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    imageView.userInteractionEnabled=NO;
+
+    [picker setCameraOverlayView: imageView] ;
+    
+    
+    // [picker setCameraOverlayView:[self prePhotoView]];
+    
+    [picker setDelegate:self];
+    
+    
+    [self presentViewController:picker animated:YES completion:nil];
+    
+    
+}
 @end
