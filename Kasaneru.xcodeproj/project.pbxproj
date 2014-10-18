@@ -379,6 +379,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kasaneru/Kasaneru-Prefix.pch";
 				INFOPLIST_FILE = "Kasaneru/Kasaneru-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -392,6 +393,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Kasaneru/Kasaneru-Prefix.pch";
 				INFOPLIST_FILE = "Kasaneru/Kasaneru-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -456,6 +458,7 @@
 				07358CA519A8C05A006A3783 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07358CA619A8C05A006A3783 /* Build configuration list for PBXNativeTarget "KasaneruTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +467,7 @@
 				07358CA819A8C05A006A3783 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

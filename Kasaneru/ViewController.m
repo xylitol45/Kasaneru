@@ -47,15 +47,18 @@
     imageView.userInteractionEnabled=NO;
     
     [picker setCameraOverlayView: imageView] ;
-    
-    
+    [picker setDelegate:self];
+//    [picker shouldAutorotate:NO];
     // [picker setCameraOverlayView:[self prePhotoView]];
     
-    [picker setDelegate:self];
-    
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    while ([currentDevice isGeneratingDeviceOrientationNotifications])
+        [currentDevice endGeneratingDeviceOrientationNotifications];
     
     [self presentViewController:picker animated:YES completion:nil];
 
+    while ([currentDevice isGeneratingDeviceOrientationNotifications])
+        [currentDevice endGeneratingDeviceOrientationNotifications];
 }
 
 #pragma mark -
@@ -72,8 +75,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     //    CGFloat w = image.size.width;
     
     UIImage *image = (UIImage *) [info objectForKey:UIImagePickerControllerOriginalImage] ;
-    
-    
     
     [[self prePhotoView] setImage:image];
     
@@ -103,11 +104,11 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
      }
      }
      */
-	[picker dismissModalViewControllerAnimated:YES];
+	[picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-	[picker dismissModalViewControllerAnimated:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 
